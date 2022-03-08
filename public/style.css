@@ -3,7 +3,7 @@
 * {
 	margin: 0;
 	padding: 0;
-	box-sizing: border-box;
+	box-sizing: border-box!important;
 	font-family: 'Ubuntu', sans-serif !important;
 }
 
@@ -24,7 +24,7 @@
 }
 
 body {
-	min-height: 100vh;
+	min-height: 100vh!important;
 	background-color: var(--body-color);
 	transition: var(--tran-05);
 	overflow-x: hidden;
@@ -304,18 +304,20 @@ body.dark .switch::before {
 }
 
 /* mainPrincipal */
+
 .mainPrincipal {
 	position: absolute;
 	top: 0;
 	top: 0;
 	left: 250px;
-	height: 100vh;
+	height: 100vh!important;
 	width: calc(100% - 250px);
 	background-color: var(--body-color);
 	transition: var(--tran-05);
 }
 
 .mainPrincipal.active {
+	height: 100vh!important;
 	width: calc(100% - 78px);
 	left: 78px;
 }
@@ -441,6 +443,7 @@ body.dark .cardBox .cardBoxUnit:hover .iconBox {
 
 .cardHeader h3 {
 	font-weight: 600;
+	font-size: 1.4em;
 	color: var(--primary-color);
 }
 
@@ -454,7 +457,7 @@ body.dark .cardHeader h3 {
 	padding: 3px 6px;
 	background: #287bff;
 	text-decoration: none;
-	color: var(--sidebar-color);
+	color: var(--sidebar-color)!important;
 	border-radius: 6px;
 	font-size: 15px;
 }
@@ -493,7 +496,6 @@ body.dark .details .recent table tbody tr:hover {
 	padding: 10px;
 }
 
-.details .recent table th:last-child,
 .details .recent table td:last-child {
 	text-align: end;
 }
@@ -542,7 +544,7 @@ body.dark .details .recent table tbody tr:hover {
 
 	.sidebarPrincipal.close~.mainPrincipal {
 		left: 250px;
-		height: 100vh;
+		height: 100vh!important;
 		width: calc(100% - 250px);
 	}
 
@@ -558,11 +560,13 @@ body.dark .details .recent table tbody tr:hover {
 	}
 
 	.mainPrincipal {
+		height: 100vh!important;
 		width: 100%;
 		left: 0px;
 	}
 
 	.mainPrincipal.active {
+		height: 100vh!important;
 		left: 250px;
 	}
 

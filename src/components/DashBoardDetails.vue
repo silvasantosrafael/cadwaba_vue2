@@ -56,7 +56,6 @@
 
 <script>
 // import Pagination from './Pagination.vue';
-// import {range} from 'lodash'
 
 export default {
   // components: { Pagination },
