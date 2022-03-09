@@ -13,14 +13,13 @@
     <!-- Component Datails -->
     <DashBoardDetails
       :listAllNumbers="listAllNumbers"
-      :listRecentNumbers="listRecentNumbers"
       :showCardAllNumbers="activeCard"
     />
   </div>
 </template>
 
 <script>
-import numbers from "../services/numbersRequests";
+import numbersRequests from '@/services/numbersRequests';
 import DashBoardCards from "./DashBoardCards.vue";
 import DashBoardDetails from "./DashBoardDetails.vue";
 
@@ -30,7 +29,6 @@ export default {
   data() {
     return {
       listAllNumbers: [],
-      listRecentNumbers: [],
       totalNumbers: null,
       totalNumbersActive: null,
       totalNumbersDeactived: null,
@@ -44,9 +42,8 @@ export default {
   },
   mounted() {
     // Request all data from API
-    numbers.getAllNumbers().then((response) => {
-      let dataResponse = response.data;
-      let listRecent = [];
+    numbersRequests.getAllNumbers().then((response) => {
+      const dataResponse = response.data;
       let listActive = [];
       let listDeactive = [];
 
@@ -56,9 +53,6 @@ export default {
       this.totalNumbers = dataResponse.length;
       this.totalNumbersActive = listActive.length;
       this.totalNumbersDeactived = listDeactive.length;
-
-      listRecent = dataResponse.slice(0, 5).reverse();
-      this.listRecentNumbers = listRecent;
 
       //Get the number of items by status
       for (let index = 0; index < dataResponse.length; index++) {
@@ -74,9 +68,8 @@ export default {
 
     // Update data for the Components
     setInterval(() => {
-      numbers.getAllNumbers().then((response) => {
-        let dataResponse = response.data;
-        let listRecent = [];
+      numbersRequests.getAllNumbers().then((response) => {
+        const dataResponse = response.data;
         let listActive = [];
         let listDeactive = [];
 
@@ -84,9 +77,6 @@ export default {
         this.totalNumbers = dataResponse.length;
         this.totalNumbersActive = listActive.length;
         this.totalNumbersDeactived = listDeactive.length;
-
-        listRecent = dataResponse.slice(0, 5).reverse();
-        this.listRecentNumbers = listRecent;
 
         for (let index = 0; index < dataResponse.length; index++) {
           if (dataResponse[index].Ativo == 1) {
