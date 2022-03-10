@@ -1,6 +1,6 @@
 <template>
   <div class="cardBox">
-    <div class="cardBoxUnit" @click="$emit('emitMode')">
+    <div class="cardBoxUnit">
       <div>
         <div class="numbers" id="tel">{{ totalNumbers }}</div>
         <div class="cardName">Total de números</div>
@@ -33,15 +33,10 @@
 <script>
 export default {
   name: "DashBoardCards",
-  emits: ["emitMode"],
   props: {
     totalNumbers: Number,
     totalNumbersActive: Number,
     totalNumbersDeactived: Number,
-  },
-  methods: {},
+  }
 };
 </script>
-
-<style>
-</style>

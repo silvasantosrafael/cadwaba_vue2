@@ -7,13 +7,11 @@
       :totalNumbers="totalNumbers"
       :totalNumbersActive="totalNumbersActive"
       :totalNumbersDeactived="totalNumbersDeactived"
-      @emitMode="showCardNumbers"
     />
 
     <!-- Component Datails -->
     <DashBoardDetails
       :listAllNumbers="listAllNumbers"
-      :showCardAllNumbers="activeCard"
     />
   </div>
 </template>
@@ -32,22 +30,16 @@ export default {
       totalNumbers: null,
       totalNumbersActive: null,
       totalNumbersDeactived: null,
-      activeCard: true,
     };
-  },
-  methods: {
-    showCardNumbers() {
-      this.activeCard = !this.activeCard;
-    },
   },
   mounted() {
     // Request all data from API
     numbersRequests.getAllNumbers().then((response) => {
-      const dataResponse = response.data;
+      let dataResponse = response.data;
       let listActive = [];
       let listDeactive = [];
 
-      this.listAllNumbers = dataResponse;
+      this.listAllNumbers = dataResponse.reverse();
 
       // Data for Component Card
       this.totalNumbers = dataResponse.length;
@@ -69,11 +61,11 @@ export default {
     // Update data for the Components
     setInterval(() => {
       numbersRequests.getAllNumbers().then((response) => {
-        const dataResponse = response.data;
+        let dataResponse = response.data;
         let listActive = [];
         let listDeactive = [];
 
-        this.listAllNumbers = dataResponse;
+        this.listAllNumbers = dataResponse.reverse();
         this.totalNumbers = dataResponse.length;
         this.totalNumbersActive = listActive.length;
         this.totalNumbersDeactived = listDeactive.length;

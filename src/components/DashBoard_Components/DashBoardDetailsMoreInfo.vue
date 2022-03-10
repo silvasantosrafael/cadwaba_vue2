@@ -1,6 +1,6 @@
 <template>
   <div>
-    <b-table borderless :items="listAllNumbers" :fields="fields" per-page="5" sort-desc>
+    <b-table borderless :items="listAllNumbers" :fields="fields" per-page="5">
       <template v-slot:cell(Ativo)="data">
         <td v-if="data.value == 1" class="status active badge-active">Ativo</td>
         <td v-else class="status deactive badge-deactive">Desativado</td>
@@ -18,10 +18,6 @@ export default {
   data() {
     return {
       fields: [
-        {
-          key: "Id",
-          label: "ID",
-        },
         {
           key: "Nome_Numero",
           label: "Nome",

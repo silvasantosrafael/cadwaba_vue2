@@ -38,11 +38,6 @@ export default {
       currentPage: 1,
       fields: [
         {
-          key: "Id",
-          label: "ID",
-          sortable: true,
-        },
-        {
           key: "Nome_Numero",
           label: "Nome",
           sortable: true,
