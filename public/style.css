@@ -3,7 +3,7 @@
 * {
 	margin: 0;
 	padding: 0;
-	box-sizing: border-box!important;
+	box-sizing: border-box;
 	font-family: 'Ubuntu', sans-serif !important;
 }
 
@@ -24,8 +24,8 @@
 }
 
 body {
-	min-height: 100vh!important;
-	background-color: var(--body-color);
+	/* height: 100%; */
+	background-color: var(--body-color)!important;
 	transition: var(--tran-05);
 	overflow-x: hidden;
 }
@@ -308,7 +308,6 @@ body.dark .switch::before {
 .mainPrincipal {
 	position: absolute;
 	top: 0;
-	top: 0;
 	left: 250px;
 	height: 100vh!important;
 	width: calc(100% - 250px);
@@ -419,7 +418,7 @@ body.dark .cardBox .cardBoxUnit:hover .iconBox {
 .details {
 	position: relative;
 	width: 100%;
-	padding: 8px 20px;
+	padding: 0px 20px;
 	display: grid;
 	grid-template-columns: 2fr 1fr;
 	column-gap: 20px;
@@ -522,10 +521,11 @@ body.dark .details .recent table tbody tr:hover {
 .moreInfo {
 	position: relative;
 	display: grid;
-	min-height: 500px;
+	height: 480px;
 	padding: 20px;
 	box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
 	border-radius: 8px;
+	background: var(--sidebar-color);
 }
 
 /* Table Pagination */
@@ -625,13 +625,13 @@ body.dark .content .content-table table tbody tr:hover {
 
 	.sidebarPrincipal.close~.mainPrincipal {
 		left: 250px;
-		height: 100vh!important;
+		/* height: 100vh!important; */
 		width: calc(100% - 250px);
 	}
 
 	.sidebarPrincipal.close~.mainPrincipal.active {
 		left: 250px;
-		height: 100vh;
+		/* height: 100vh; */
 		width: calc(100% - 250px);
 	}
 
@@ -641,13 +641,13 @@ body.dark .content .content-table table tbody tr:hover {
 	}
 
 	.mainPrincipal {
-		height: 100vh!important;
+		/* height: 100vh!important; */
 		width: 100%;
 		left: 0px;
 	}
 
 	.mainPrincipal.active {
-		height: 100vh!important;
+		/* height: 100vh!important; */
 		left: 250px;
 	}
 
@@ -657,7 +657,30 @@ body.dark .content .content-table table tbody tr:hover {
 }
 
 @media (max-height: 618px) {
-	.details .recent {
-		min-height: 360px;
+
+	#my-table{
+		font-size: 0.8em!important;
 	}
+
+	.details .recent{
+		height: 386px;
+	}
+
+	.topbar {
+		height: 10px;
+	}
+
+	.moreInfo {
+		min-height: 386px;
+	}
+
+	.details {
+		gap: 12px;
+	}
+
+	.cardBox {
+		gap: 12px;
+		padding: 10px 20px;
+	}
+
 }
