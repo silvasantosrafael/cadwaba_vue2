@@ -1,38 +1,158 @@
 <template>
   <div class="details">
-    <div v-show="false" class="recent">
-      <div class="cardHeader">
-        <h3>Números Recentes</h3>
-      </div>
-      <!-- <DashBoardDetailsRecents :listAllNumbers="listAllNumbers" /> -->
-    </div>
-
-    <div v-show="true" class="recent">
+    <div class="recent" v-show="!showDetailsNumber">
       <div class="cardHeader">
         <h3>Todos os números</h3>
       </div>
-      <DashBoardDetailsAll :listAllNumbers="listAllNumbers"/>
+      <b-table
+        id="my-table"
+        :current-page="currentPage"
+        :items="this.listAllNumbers"
+        :fields="fields"
+        :per-page="perPage"
+        borderless
+      >
+        <template v-slot:cell(Ativo)="data">
+          <td v-if="data.value == 1" class="status active badge-active">Ativo</td>
+          <td v-else class="status deactive badge-deactive">Desativado</td>
+        </template>
+        <template v-slot:cell(info)="data">
+          <a href="#" @click="getDataNumber(data.item.Id)"><i class="bx bx-file-find"></i></a>
+        </template>
+      </b-table>
+
+      <b-pagination
+        v-model="currentPage"
+        :total-rows="this.listAllNumbers.length"
+        :per-page="perPage"
+        aria-controls="my-table"
+        align="center"
+        class="customPagination"
+      >
+      </b-pagination>
     </div>
-    
-    <div class="moreInfo">
+
+    <div class="recent" v-show="showDetailsNumber">
+      <b-button variant="primary" size="sm" @click="showDetailsNumber=false">Voltar</b-button>
+      <br>
+      <hr class="text">
       <div class="cardHeader">
-        <h3>Mais Informações</h3>
-      </div> 
-      
+        <h3>WABA: {{this.listNumber.Waba}}</h3>
+        <span v-if="this.listNumber.Ativo == 1" class="status active badge-active">Ativo</span>
+        <span v-else class="status deactive badge-deactive">Desativado</span>
+      </div>
+      <h6 class="text">BMID: {{ this.listNumber.Bm_id }}</h6>
+      <div class="table-responsive-lg">
+      <table class="table table-borderless">
+        <tbody>
+          <tr>
+            <th>Nome:</th>
+            <td>{{ listNumber.Nome_Numero }}</td>
+          </tr>
+          <tr>
+            <th>Número:</th>
+            <td>{{ this.listNumber.Numero }}</td>
+          </tr>
+          <tr v-if="this.listNumber.Ativo == 1">
+            <th>Data de ativação:</th>
+            <td>{{ this.listNumber.Data_ativacao }}</td>
+          </tr>
+          <tr v-else>
+            <th>Data de desativação:</th>
+            <td>{{ this.listNumber.Data_desativacao }}</td>
+          </tr>
+          <tr>
+            <th>Empresa</th>
+            <td>{{ this.listNumber.Empresa }}</td>
+          </tr>
+          <tr>
+            <th>Parceiro</th>
+            <td>{{ this.listNumber.Parceiro }}</td>
+          </tr>
+        </tbody>
+      </table>
+      </div>
     </div>
-  
+
+    <div class="moreInfo" v-show="showDetailsNumber">
+      <div class="number-image-space">
+        <b-img
+          :src="listNumber.Caminho_imagem"
+          rounded="circle"
+          alt="Circle image"
+          center
+          fluid
+          class="image-number"
+        ></b-img>
+      </div>
+      <div class="number-more-info text">
+        <b>Descrição:</b>
+        <p>
+          Somos uma empresa com um conceito inovador em planos de saúde,
+          especialistas no público 45+ e com foco na qualidade de vida, na saúde
+          e no bem-estar dos nossos clientes.
+        </p>
+        <b>Endereço:</b>
+        <p>
+          Rua Engenheiro Enaldo Cravo Peixoto 215 – Loja B – Tijuca – Rio de
+          Janeiro – RJ
+        </p>
+        <p><b>e-mail:</b> atendimento@levesaude.com.br</p>
+        <p><b>Site:</b> https://levesaude.com.br/</p>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-import DashBoardDetailsAll from './DashBoardDetailsAll.vue';
-// import DashBoardDetailsRecents from "./DashBoardDetailsRecents.vue";
+import numbersRequests from "@/services/numbersRequests";
 
 export default {
   name: "DashBoardDetails",
-  components: { DashBoardDetailsAll },
   props: {
     listAllNumbers: Array,
+  },
+  data() {
+    return {
+      showDetailsNumber: false,
+      listNumber: [],
+      perPage: 5,
+      currentPage: 1,
+      fields: [
+        {
+          key: "Nome_Numero",
+          label: "Nome",
+          sortable: true,
+        },
+        {
+          key: "Numero",
+          label: "Número",
+          sortable: true,
+        },
+        {
+          key: "Waba",
+          label: "WABA",
+          sortable: true,
+        },
+        {
+          key: "Ativo",
+          label: "Status",
+          sortable: true,
+        },
+        {
+          key: "info",
+          label: "Info",
+        },
+      ],
+    };
+  },
+  methods: {
+    getDataNumber(id) {
+      numbersRequests.getNumber(id).then((response) => {
+        this.listNumber = response.data[0];
+      });
+      this.showDetailsNumber = !this.showDetailsNumber;
+    },
   },
 };
 </script>

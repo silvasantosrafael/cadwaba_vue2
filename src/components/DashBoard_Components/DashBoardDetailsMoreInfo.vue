@@ -1,38 +1,37 @@
 <template>
   <div>
-    <b-table borderless :items="listAllNumbers" :fields="fields" per-page="5">
-      <template v-slot:cell(Ativo)="data">
-        <td v-if="data.value == 1" class="status active badge-active">Ativo</td>
-        <td v-else class="status deactive badge-deactive">Desativado</td>
-      </template>
-    </b-table>
+   
   </div>
 </template>
 
 <script>
+// import numbersRequests from "@/services/numbersRequests";
+
 export default {
-  name: "DashBoardDetailsRecents",
-  props: {
-    listAllNumbers: Array,
-  },
+  name: "DashBoardDetailsMoreInfo",
   data() {
     return {
+      listNumber: [],
       fields: [
         {
           key: "Nome_Numero",
           label: "Nome",
+          sortable: true,
         },
         {
           key: "Numero",
           label: "Número",
+          sortable: true,
         },
         {
           key: "Waba",
           label: "WABA",
+          sortable: true,
         },
         {
           key: "Ativo",
           label: "Status",
+          sortable: true,
         },
       ],
     };

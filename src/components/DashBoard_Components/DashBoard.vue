@@ -1,7 +1,5 @@
 <template>
   <div class="mainPrincipal">
-    <div class="topbar"></div>
-
     <!-- Component Cards -->
     <DashBoardCards
       :totalNumbers="totalNumbers"

@@ -521,11 +521,20 @@ body.dark .details .recent table tbody tr:hover {
 .moreInfo {
 	position: relative;
 	display: grid;
-	height: 480px;
+	min-height: 480px;
 	padding: 20px;
+	background: var(--sidebar-color);
 	box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
 	border-radius: 8px;
-	background: var(--sidebar-color);
+	gap: 20px;
+}
+
+.number-more-info {
+	font-size: 0.9em;
+}
+
+.number-image {
+	margin-bottom: 20px;
 }
 
 /* Table Pagination */
