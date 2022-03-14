@@ -8,9 +8,8 @@
     />
 
     <!-- Component Datails -->
-    <DashBoardDetails
-      :listAllNumbers="listAllNumbers"
-    />
+    <DashBoardDetails :listAllNumbers="listAllNumbers" />
+  
   </div>
 </template>
 

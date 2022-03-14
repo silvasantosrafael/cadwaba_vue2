@@ -358,13 +358,13 @@ body.dark .mainPrincipal .text {
 	padding: 20px;
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);
-	gap: 30px;
+	gap: 20px;
 }
 
 .cardBox .cardBoxUnit {
 	position: relative;
 	background: var(--sidebar-color);
-	padding: 30px;
+	padding: 20px;
 	border-radius: 8px;
 	display: flex;
 	justify-content: space-between;
@@ -408,6 +408,7 @@ body.dark .cardBoxUnit .numbers {
 	color: var(--sidebar-color);
 }
 
+
 body.dark .cardBox .cardBoxUnit:hover .numbers,
 body.dark .cardBox .cardBoxUnit:hover .cardName,
 body.dark .cardBox .cardBoxUnit:hover .iconBox {
@@ -426,7 +427,7 @@ body.dark .cardBox .cardBoxUnit:hover .iconBox {
 
 .details .recent {
 	position: relative;
-	grid-template-rows: 1fr 8fr;
+	/* grid-template-rows: 1fr 8fr; */
 	min-height: 480px;
 	background: var(--sidebar-color);
 	padding: 20px;
@@ -481,7 +482,7 @@ body.dark .cardHeader h3 {
 	border-bottom: none;
 }
 
-.details .recent table tbody tr:hover {
+/* .details .recent table tbody tr:hover {
 	background: #287bff;
 	color: var(--sidebar-color);
 }
@@ -489,7 +490,16 @@ body.dark .cardHeader h3 {
 body.dark .details .recent table tbody tr:hover {
 	background: #287bff;
 	color: #FFF;
+} */
+
+.details .recent table tbody tr .bx {
+	font-size: 25pt;
 }
+
+body.dark .details .recent table tbody tr .bx:hover{
+	color: var(--text-color);
+}
+
 
 .details .recent table td {
 	padding: 10px;
@@ -527,14 +537,20 @@ body.dark .details .recent table tbody tr:hover {
 	box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
 	border-radius: 8px;
 	gap: 20px;
+	overflow-y: auto;
 }
 
 .number-more-info {
 	font-size: 0.9em;
 }
 
-.number-image {
+.number-image-space {
 	margin-bottom: 20px;
+}
+
+.number-image-space .image-number {
+	width: 180px;
+	height: 180px;
 }
 
 /* Table Pagination */
@@ -634,13 +650,12 @@ body.dark .content .content-table table tbody tr:hover {
 
 	.sidebarPrincipal.close~.mainPrincipal {
 		left: 250px;
-		/* height: 100vh!important; */
 		width: calc(100% - 250px);
 	}
 
 	.sidebarPrincipal.close~.mainPrincipal.active {
 		left: 250px;
-		/* height: 100vh; */
+		height: 100vh;
 		width: calc(100% - 250px);
 	}
 
@@ -650,13 +665,12 @@ body.dark .content .content-table table tbody tr:hover {
 	}
 
 	.mainPrincipal {
-		/* height: 100vh!important; */
 		width: 100%;
 		left: 0px;
+		padding-left: 20px;
 	}
 
 	.mainPrincipal.active {
-		/* height: 100vh!important; */
 		left: 250px;
 	}
 
@@ -680,7 +694,7 @@ body.dark .content .content-table table tbody tr:hover {
 	}
 
 	.moreInfo {
-		min-height: 386px;
+		height: 386px;
 	}
 
 	.details {
