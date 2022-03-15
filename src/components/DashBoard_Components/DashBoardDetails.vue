@@ -150,7 +150,9 @@ export default {
     getDataNumber(id) {
       numbersRequests.getNumber(id).then((response) => {
         this.listNumber = response.data[0];
+        console.log(this.listNumber);
       });
+      
       this.showDetailsNumber = !this.showDetailsNumber;
     },
   },
