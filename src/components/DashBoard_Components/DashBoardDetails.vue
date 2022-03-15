@@ -5,13 +5,13 @@
         <h3>Todos os números</h3>
       </div>
       <b-table
-        id="my-table"
         :current-page="currentPage"
         :items="this.listAllNumbers"
         :fields="fields"
         :per-page="perPage"
-        borderless
-      >
+        :busy="isBusy"
+        borderless>
+
         <template v-slot:cell(Ativo)="data">
           <td v-if="data.value == 1" class="status active badge-active">Ativo</td>
           <td v-else class="status deactive badge-deactive">Desativado</td>
@@ -19,13 +19,18 @@
         <template v-slot:cell(info)="data">
           <a href="#" @click="getDataNumber(data.item.Id)"><i class="bx bx-file-find"></i></a>
         </template>
+        <template #table-busy>
+          <div class="text-center text-danger my-2">
+            <b-spinner class="align-middle"></b-spinner>
+            <strong>Carregando...</strong>
+          </div>
+        </template>
       </b-table>
 
       <b-pagination
         v-model="currentPage"
         :total-rows="this.listAllNumbers.length"
         :per-page="perPage"
-        aria-controls="my-table"
         align="center"
         class="customPagination"
       >
@@ -33,44 +38,44 @@
     </div>
 
     <div class="recent" v-show="showDetailsNumber">
-      <b-button variant="primary" size="sm" @click="showDetailsNumber=false">Voltar</b-button>
-      <br>
-      <hr class="text">
+      <b-button variant="primary" size="sm" @click="showDetailsNumber = false">Voltar</b-button>
+      <br />
+      <hr class="text" />
       <div class="cardHeader">
-        <h3>WABA: {{this.listNumber.Waba}}</h3>
+        <h3>WABA: {{ this.listNumber.Waba }}</h3>
         <span v-if="this.listNumber.Ativo == 1" class="status active badge-active">Ativo</span>
         <span v-else class="status deactive badge-deactive">Desativado</span>
       </div>
       <h6 class="text">BMID: {{ this.listNumber.Bm_id }}</h6>
       <div class="table-responsive-lg">
-      <table class="table table-borderless">
-        <tbody>
-          <tr>
-            <th>Nome:</th>
-            <td>{{ listNumber.Nome_Numero }}</td>
-          </tr>
-          <tr>
-            <th>Número:</th>
-            <td>{{ this.listNumber.Numero }}</td>
-          </tr>
-          <tr v-if="this.listNumber.Ativo == 1">
-            <th>Data de ativação:</th>
-            <td>{{ this.listNumber.Data_ativacao }}</td>
-          </tr>
-          <tr v-else>
-            <th>Data de desativação:</th>
-            <td>{{ this.listNumber.Data_desativacao }}</td>
-          </tr>
-          <tr>
-            <th>Empresa</th>
-            <td>{{ this.listNumber.Empresa }}</td>
-          </tr>
-          <tr>
-            <th>Parceiro</th>
-            <td>{{ this.listNumber.Parceiro }}</td>
-          </tr>
-        </tbody>
-      </table>
+        <table class="table table-borderless">
+          <tbody>
+            <tr>
+              <th>Nome:</th>
+              <td>{{ listNumber.Nome_Numero }}</td>
+            </tr>
+            <tr>
+              <th>Número:</th>
+              <td>{{ this.listNumber.Numero }}</td>
+            </tr>
+            <tr v-if="this.listNumber.Ativo == 1">
+              <th>Data de ativação:</th>
+              <td>{{ this.listNumber.Data_ativacao }}</td>
+            </tr>
+            <tr v-else>
+              <th>Data de desativação:</th>
+              <td>{{ this.listNumber.Data_desativacao }}</td>
+            </tr>
+            <tr>
+              <th>Empresa</th>
+              <td>{{ this.listNumber.Empresa }}</td>
+            </tr>
+            <tr>
+              <th>Parceiro</th>
+              <td>{{ this.listNumber.Parceiro }}</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
 
@@ -111,6 +116,7 @@ export default {
   name: "DashBoardDetails",
   props: {
     listAllNumbers: Array,
+    isBusy: Boolean,
   },
   data() {
     return {

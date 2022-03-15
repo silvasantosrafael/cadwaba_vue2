@@ -624,6 +624,16 @@ body.dark .content .content-table table tbody tr:hover {
 	margin-top: 30px;
 }
 
+.page-link {
+	background-color: var(--sidebar-color)!important;
+	color: var(--text-color)!important;
+}
+
+.page-item.active .page-link {
+	color: #FFF!important;
+	background-color: #287BFF!important
+}
+
 @media (max-width: 991px) {
 	.sidebarPrincipal {
 		left: -250px;

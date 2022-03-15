@@ -1,12 +1,11 @@
 <template>
-  <div>
-    <Teste/>
+  <div class="mainPrincipal">
+    <div class="topbar"></div>
+    <h1 class="text text-center">Cadastro</h1>
   </div>
 </template>
 <script>
-import Teste from '@/components/teste.vue';
 export default {
   name: "RegisterNumber",
-  components: {Teste}
 };
 </script>
