@@ -57,7 +57,7 @@ body.dark {
 	z-index: 100;
 }
 
-.sidebarPrincipal.close {
+.sidebarPrincipal.active {
 	width: 88px;
 }
 
@@ -99,7 +99,7 @@ body.dark {
 	opacity: 1;
 }
 
-.sidebarPrincipal.close .text {
+.sidebarPrincipal.active .text {
 	opacity: 0;
 }
 
@@ -164,7 +164,7 @@ body.dark .sidebarPrincipal header .toggle {
 	color: var(--text-color);
 }
 
-.sidebarPrincipal.close .toggle {
+.sidebarPrincipal.active .toggle {
 	transform: translateY(-50%) rotate(0deg);
 }
 
@@ -321,13 +321,13 @@ body.dark .switch::before {
 	left: 78px;
 }
 
-.sidebarPrincipal.close~.mainPrincipal {
+.sidebarPrincipal.active~.mainPrincipal {
 	left: 88px;
 	height: 100vh;
 	width: calc(100% - 88px);
 }
 
-.sidebarPrincipal.close~.mainPrincipal.active {
+.sidebarPrincipal.active~.mainPrincipal.active {
 	left: 88px;
 	height: 100vh;
 	width: calc(100% - 88px);
@@ -644,26 +644,26 @@ body.dark .content .content-table table tbody tr:hover {
 		transform: translateY(-50%) rotate(0deg);
 	}
 
-	.sidebarPrincipal.close {
+	.sidebarPrincipal.active {
 		width: 250px;
 		left: 0;
 	}
 
-	.sidebarPrincipal.close .text {
+	.sidebarPrincipal.active .text {
 		opacity: 1;
 	}
 
-	.sidebarPrincipal.close header .toggle {
+	.sidebarPrincipal.active header .toggle {
 		right: -25px;
 		transform: translateY(-50%) rotate(180deg);
 	}
 
-	.sidebarPrincipal.close~.mainPrincipal {
+	.sidebarPrincipal.active~.mainPrincipal {
 		left: 250px;
 		width: calc(100% - 250px);
 	}
 
-	.sidebarPrincipal.close~.mainPrincipal.active {
+	.sidebarPrincipal.active~.mainPrincipal.active {
 		left: 250px;
 		height: 100vh;
 		width: calc(100% - 250px);

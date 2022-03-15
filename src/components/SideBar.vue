@@ -70,7 +70,7 @@ export default {
     activeClose() {
       let main = document.querySelector(".mainPrincipal");
       let sidebar = document.querySelector(".sidebarPrincipal");
-      sidebar.classList.toggle("close");
+      sidebar.classList.toggle("active");
       main.classList.toggle("active");
     },
 
