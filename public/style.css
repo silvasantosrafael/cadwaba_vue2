@@ -503,6 +503,7 @@ body.dark .details .recent table tbody tr .bx:hover{
 
 .details .recent table td {
 	padding: 10px;
+	vertical-align: middle;
 }
 
 .details .recent table th:last-child,

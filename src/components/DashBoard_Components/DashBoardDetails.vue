@@ -20,7 +20,7 @@
           <a href="#" @click="getDataNumber(data.item.Id)"><i class="bx bx-file-find"></i></a>
         </template>
         <template #table-busy>
-          <div class="text-center text-danger my-2">
+          <div class="text-center text-primary my-4">
             <b-spinner class="align-middle"></b-spinner>
             <strong>Carregando...</strong>
           </div>
