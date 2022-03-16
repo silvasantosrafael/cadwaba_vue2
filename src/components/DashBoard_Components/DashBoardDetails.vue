@@ -10,7 +10,8 @@
         :fields="fields"
         :per-page="perPage"
         :busy="isBusy"
-        borderless>
+        borderless
+        small>
 
         <template v-slot:cell(Ativo)="data">
           <td v-if="data.value == 1" class="status active badge-active">Ativo</td>

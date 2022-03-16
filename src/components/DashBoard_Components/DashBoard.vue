@@ -5,6 +5,7 @@
       :totalNumbers="totalNumbers"
       :totalNumbersActive="totalNumbersActive"
       :totalNumbersDeactived="totalNumbersDeactived"
+      :show="show"
     />
 
     <!-- Component Datails -->
@@ -26,19 +27,22 @@ export default {
       totalNumbers: null,
       totalNumbersActive: null,
       totalNumbersDeactived: null,
-      isBusy: false,
+      isBusy: true,
+      show: true,
     };
   },
   methods: {
     getAllNumbers() {
-      numbersRequests.getAllNumbers()
+      numbersRequests
+        .getAllNumbers()
         .then((response) => {
           let dataResponse = response.data;
           let listActive = [];
           let listDeactive = [];
 
           if (response.status == 200) {
-            this.isBusy = false
+            this.isBusy = false;
+            this.show = false;
           }
 
           this.listAllNumbers = dataResponse.reverse();
@@ -59,13 +63,14 @@ export default {
           }
         })
         .catch((error) => {
-          this.isBusy = true
-          this.$bvToast.toast("Falha ao carregar dados da API",{
+          this.isBusy = true;
+          this.show = true;
+          this.$bvToast.toast("Falha ao carregar dados da API", {
             title: "Erro",
             variant: "warning",
             autoHideDelay: 5000,
-            solid: true
-          })
+            solid: true,
+          });
           console.log(error);
         });
     },
