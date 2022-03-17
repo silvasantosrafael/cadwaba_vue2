@@ -9,7 +9,7 @@
     />
 
     <!-- Component Datails -->
-    <DashBoardDetails :listAllNumbers="listAllNumbers" :isBusy="isBusy" />
+    <DashBoardDetails :listAllNumbers="listAllNumbers" :show="show" />
   </div>
 </template>
 

@@ -427,7 +427,6 @@ body.dark .cardBox .cardBoxUnit:hover .iconBox {
 
 .details .recent {
 	position: relative;
-	/* grid-template-rows: 1fr 8fr; */
 	min-height: 480px;
 	background: var(--sidebar-color);
 	padding: 20px;
@@ -506,10 +505,10 @@ body.dark .details .recent table tbody tr .bx:hover{
 	vertical-align: middle;
 }
 
-.details .recent table th:last-child,
+/* .details .recent table th:last-child,
 .details .recent table td:last-child {
 	text-align: -webkit-right;
-}
+} */
 
 .status.active {
 	padding: 2px 4px;
