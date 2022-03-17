@@ -438,7 +438,7 @@ body.dark .cardBox .cardBoxUnit:hover .iconBox {
 .cardHeader {
 	display: flex;
 	justify-content: space-between;
-	align-items: flex-start;
+	align-items: center;
 }
 
 .cardHeader h3 {

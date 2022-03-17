@@ -11,14 +11,18 @@
         :per-page="perPage"
         :busy="isBusy"
         borderless
-        small>
-
+        small
+      >
         <template v-slot:cell(Ativo)="data">
-          <td v-if="data.value == 1" class="status active badge-active">Ativo</td>
+          <td v-if="data.value == 1" class="status active badge-active">
+            Ativo
+          </td>
           <td v-else class="status deactive badge-deactive">Desativado</td>
         </template>
         <template v-slot:cell(info)="data">
-          <a href="#" @click="getDataNumber(data.item.Id)"><i class="bx bx-file-find"></i></a>
+          <a href="#" @click="getDataNumber(data.item.Id)"
+            ><i class="bx bx-file-find"></i
+          ></a>
         </template>
         <template #table-busy>
           <div class="text-center text-primary my-4">
@@ -39,15 +43,16 @@
     </div>
 
     <div class="recent" v-show="showDetailsNumber">
-      <b-button variant="primary" size="sm" @click="showDetailsNumber = false">Voltar</b-button>
-      <br />
-      <hr class="text" />
       <div class="cardHeader">
-        <h3>WABA: {{ this.listNumber.Waba }}</h3>
+      <b-button variant="primary" size="sm" @click="showDetailsNumber = false">Voltar</b-button>
+        <div class="text-center">
+          <h3>WABA: {{ this.listNumber.Waba }}</h3>
+          <h6 class="text">BMID: {{ this.listNumber.Bm_id }}</h6>
+        </div>
         <span v-if="this.listNumber.Ativo == 1" class="status active badge-active">Ativo</span>
         <span v-else class="status deactive badge-deactive">Desativado</span>
       </div>
-      <h6 class="text">BMID: {{ this.listNumber.Bm_id }}</h6>
+      <hr class="text" />
       <div class="table-responsive-lg">
         <table class="table table-borderless">
           <tbody>
@@ -159,7 +164,7 @@ export default {
         this.listNumber = response.data[0];
         console.log(this.listNumber);
       });
-      
+
       this.showDetailsNumber = !this.showDetailsNumber;
     },
   },
