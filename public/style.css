@@ -481,15 +481,17 @@ body.dark .cardHeader h3 {
 	border-bottom: none;
 }
 
-/* .details .recent table tbody tr:hover {
+.details .recent table tbody tr:hover {
 	background: #287bff;
 	color: var(--sidebar-color);
+	cursor: pointer;
 }
 
 body.dark .details .recent table tbody tr:hover {
 	background: #287bff;
 	color: #FFF;
-} */
+	cursor: pointer;
+}
 
 .details .recent table tbody tr .bx {
 	font-size: 25pt;
@@ -515,7 +517,7 @@ body.dark .details .recent table tbody tr .bx:hover{
 	background: #8de02c;
 	color: #FFF;
 	border-radius: 4px;
-	font-size: 14px;
+	font-size: 0.8em;
 	font-weight: 500;
 }
 
@@ -524,7 +526,7 @@ body.dark .details .recent table tbody tr .bx:hover{
 	background: #f00;
 	color: #FFF;
 	border-radius: 4px;
-	font-size: 14px;
+	font-size: 0.8em;
 	font-weight: 500;
 }
 

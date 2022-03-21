@@ -11,15 +11,13 @@
             :items="this.listAllNumbers"
             :fields="fields"
             :per-page="perPage"
+            @row-clicked="getDataNumber"
             borderless
             small>
 
             <template v-slot:cell(Ativo)="data">
               <td v-if="data.value == 1" class="status active badge-active">Ativo</td>
-              <td v-else class="status deactive badge-deactive">Desativado</td>
-            </template>
-            <template v-slot:cell(info)="data">
-              <a href="#" @click="getDataNumber(data.item.Id)"><i class="bx bx-file-find"></i></a>
+              <td v-else class="status deactive ">Desativado</td>
             </template>
           </b-table>
 
@@ -47,7 +45,7 @@
             <span v-else class="status deactive badge-deactive">Desativado</span>
           </div>
           <hr class="text" />
-          <div class="table-responsive-lg">
+          <div class="table-details table-responsive-lg">
             <table class="table table-borderless">
               <tbody>
                 <tr>
@@ -110,6 +108,7 @@
 
 <script>
 import numbersRequests from "@/services/numbersRequests";
+import {format} from 'date-fns'
 
 export default {
   name: "DashBoardDetails",
@@ -124,11 +123,6 @@ export default {
       perPage: 5,
       currentPage: 1,
       fields: [
-        {
-          key: "Id",
-          label: "#",
-          sortable: true,
-        },
         {
           key: "Nome_Numero",
           label: "Nome",
@@ -145,25 +139,81 @@ export default {
           sortable: true,
         },
         {
-          key: "Ativo",
-          label: "Status",
+          key: "Empresa",
+          label: "Empresa",
           sortable: true,
         },
         {
-          key: "info",
-          label: "Info",
+          key: "Parceiro",
+          label: "Parceiro",
+          sortable: true
+        },
+        {
+          key: "Data_ultima_modificacao",
+          label: "Data",
+          sortable: true,
+          formatter: (date) => {
+            date = format(new Date(date),"dd/MM/yyyy");
+            return date;
+          }
+        },
+        {
+          key: "Ativo",
+          label: "Status",
+          sortable: true,
         },
       ],
     };
   },
   methods: {
-    getDataNumber(id) {
-      numbersRequests.getNumber(id).then((response) => {
+    getDataNumber(data) {
+      numbersRequests.getNumber(data.Id).then((response) => {
         this.listNumber = response.data[0];
-        console.log(this.listNumber);
+        console.log(data);
       });
       this.showDetailsNumber = !this.showDetailsNumber;
     },
   },
+  mounted(){
+    console.log(this.listAllNumbers);
+  }
 };
 </script>
+
+<style scoped>
+  table {
+    font-size: 0.9em;
+  }
+
+  .details .recent table tbody tr:hover {
+    background: var(--sidebar-color);
+    color: var(--text-color);
+    cursor: auto;
+  }
+
+  body.dark .details .recent table tbody tr:hover {
+    background: var(--sidebar-color);
+    color: var(--text-color);
+    cursor: auto;
+  }
+
+  .details {
+	position: relative;
+	width: 100%;
+	padding: 0px 20px;
+	display: grid;
+	grid-template-columns: 2fr 0.9fr;
+	column-gap: 20px;
+}
+
+
+.table-details tbody{
+  padding-right: 160px;
+  vertical-align: center;
+}
+
+.table-details th{
+  padding-left: 160px;
+}
+
+</style>

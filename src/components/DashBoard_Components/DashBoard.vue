@@ -34,8 +34,8 @@ export default {
   methods: {
     getAllNumbers() {
       numbersRequests
-        .getAllNumbers()
-        .then((response) => {
+        .getAllNumbers().then((response) => {
+
           let dataResponse = response.data;
           let listActive = [];
           let listDeactive = [];
@@ -53,6 +53,7 @@ export default {
 
           //Get the number of items by status
           for (let index = 0; index < dataResponse.length; index++) {
+
             if (dataResponse[index].Ativo == 1) {
               listActive.push(dataResponse[index]);
               this.totalNumbersActive = listActive.length;
@@ -61,6 +62,7 @@ export default {
               this.totalNumbersDeactived = listDeactive.length;
             }
           }
+
         })
         .catch((error) => {
           this.isBusy = true;
@@ -75,7 +77,7 @@ export default {
         });
     },
   },
-  created() {
+  mounted() {
     this.getAllNumbers();
 
     setInterval(() => {
